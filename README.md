@@ -26,3 +26,7 @@ Single static page: no server, no cookies, no tracking.
 ## Licence
 
 Code: MIT. FORJA name, logo and machine designs: created for this coursework; please do not reuse them as a real brand.
+
+## Mannequins
+
+The realistic posed mannequins are generated with [MPFB](https://static.makehumancommunity.org/mpfb.html) (MakeHuman for Blender). MakeHuman base meshes and targets are released under CC0. They are anonymous display mannequins for ergonomic checks (P5 woman 1.52 m, P50 man 1.76 m, P95 man 1.88 m).

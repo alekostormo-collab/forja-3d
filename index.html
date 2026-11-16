@@ -214,6 +214,13 @@ function load(c){
       // the Blender model carries the shipped seat/roller; hide them when a mannequin sets its own
       if(userSize!=='none' && MACH[code].adjustable) m.traverse(o=>{ if(o.isMesh && /__adj/.test(o.name)) o.visible=false; });
       grp.add(hum);
+      // realistic MakeHuman (MPFB, CC0) mannequin when available; the block manikin stays as fallback
+      if(userSize!=='none') gltf.load(`human/${code}-${userSize}.glb`, h=>{
+        if(code!==want) return; const hm=h.scene; hm.scale.setScalar(1000);
+        hm.traverse(o=>{ if(o.isMesh){ o.castShadow=true; o.receiveShadow=true; } });
+        hum.traverse(o=>{ if(o.isMesh && o.material.name==='human') o.visible=false; });
+        grp.add(hm);
+      }, undefined, ()=>{});
       scene.remove(current); current=grp; scene.add(current); document.getElementById('hq').textContent='Blender model';
     }, undefined, ()=>{ document.getElementById('hq').textContent='live model'; });
   }
